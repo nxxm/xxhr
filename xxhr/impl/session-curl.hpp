@@ -492,7 +492,7 @@ void Session::Impl::SetDownloadTarget(const DownloadTo& download_to) {
 
       download_stream_.flush();
       download_stream_.close();
-      download_to.download_finished(response, download_to.destination_path, ofstream_position);
+      download_to.download_finished(std::forward<Response&&>(response), download_to.destination_path, ofstream_position);
     };
 }
 
