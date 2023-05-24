@@ -21,12 +21,12 @@ class DownloadTo {
 
     DownloadTo(
       const std::string &_destination_path,
-      std::function<void(const Response&, const std::string&, const size_t)> &&_download_finished,
+      std::function<void(const Response&, const std::string&, const size_t)> _download_finished,
       std::optional<std::function<void(size_t, size_t)>> _on_progress = std::nullopt
     )
       : destination_path(_destination_path)
-      , download_finished(std::move(_download_finished))
-      , on_progress(std::move(_on_progress.value_or([](auto,auto) {}))) 
+      , download_finished(_download_finished)
+      , on_progress(_on_progress.value_or([](auto,auto) {})) 
     { 
       // nothing to see here, carry on with your life
     }
