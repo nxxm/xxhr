@@ -616,6 +616,11 @@ void Session::Impl::prepareCommon() {
     curl_easy_setopt(curl_->handle, CURLOPT_CAINFO, "/etc/ssl/cert.pem");
 #endif
 
+    if (std::getenv("TIPI_CACERTS_PATH") != nullptr) {
+        std::string cacert_path = getenv("TIPI_CACERTS_PATH");
+        curl_easy_setopt(curl_->handle, CURLOPT_CAINFO,cacert_path.data());
+    }
+
 #if LIBCURL_VERSION_MAJOR >= 7
 #if LIBCURL_VERSION_MINOR >= 71
     // Fix loading certs from Windows cert store when using OpenSSL:
