@@ -643,7 +643,7 @@ void Session::Impl::prepareCommon() {
 
     // Enable so we are able to retrive certificate information:
     curl_easy_setopt(curl_->handle, CURLOPT_CERTINFO, 1L);
-    curl_easy_setopt(curl_->handle, CURLOPT_NOSIGNAL, 1L);
+    curl_easy_setopt(curl_->handle, CURLOPT_NOSIGNAL, 0L);
 }
 
 Response Session::Impl::makeRequest() {
