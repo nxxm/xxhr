@@ -10,13 +10,13 @@
       "u": true
     }
 
-  , "nxxm/curl" : { "@" : ":eee4ae62ee24aec9c7f8948fd8670a5e80c2cf83"
+  , "nxxm/curl" : { "@" : ":6f0e7427d75d7b7462bb940c4ec8e46ee4214b25"
       , "opts" : "set(BUILD_CURL_TESTS OFF) \nset(BUILD_CURL_EXE ON) \nset(CMAKE_USE_OPENSSL ON) \nset(CMAKE_USE_LIBSSH2 OFF) \nset(BUILD_TESTING OFF)"
       , "u" : true
       , "packages" : ["CURL"]
       , "targets" : [ "CURL::libcurl" ]
       , "requires" : {
-        "nxxm/boringssl" : { "@" : ":64b173d5c7acb7e8e270997418685d9a00f0537b",
+        "nxxm/boringssl" : { "@" : ":358175c062c3a3964d4734df4b122e6af851def0",
             "u": true
             , "packages" : ["OpenSSL"]
             , "targets" : ["OpenSSL::SSL", "OpenSSL::Crypto"]
