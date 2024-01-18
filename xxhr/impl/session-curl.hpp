@@ -617,7 +617,7 @@ void Session::Impl::prepareCommon() {
 #endif
 
     if (std::getenv("SSL_CERT_FILE") != nullptr) {
-        std::string cacert_path = getenv("SSL_CERT_FILE");
+        std::string cacert_path = std::getenv("SSL_CERT_FILE");
         curl_easy_setopt(curl_->handle, CURLOPT_CAINFO,cacert_path.data());
     }
 
