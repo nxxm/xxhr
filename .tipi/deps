@@ -28,12 +28,6 @@
           , "packages" : ["ZLIB"]
           , "targets" : ["ZLIB::zlib"]
         }
-        , "hunter-packages/c-ares" : { 
-          "@" : "v1.14.0-p0"
-          , "u" :true
-          , "packages" : ["c-ares"]
-          , "targets" : ["c-ares::cares"]
-        } 
       }
     }
 

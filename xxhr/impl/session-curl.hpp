@@ -30,7 +30,7 @@
 #include <xxhr/timeout.hpp>
 #include <xxhr/proxies.hpp>
 #include <xxhr/proxyauth.hpp>
-
+#include <boost/filesystem.hpp>
 
 
 namespace xxhr {
@@ -614,11 +614,15 @@ void Session::Impl::prepareCommon() {
 
 #if BOOST_OS_MACOS
     curl_easy_setopt(curl_->handle, CURLOPT_CAINFO, "/etc/ssl/cert.pem");
+#elif BOOST_OS_LINUX
+    if(boost::filesystem::exists("/etc/redhat-release")) {
+        curl_easy_setopt(curl_->handle, CURLOPT_CAINFO, "/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem");
+    }
 #endif
 
     if (std::getenv("SSL_CERT_FILE") != nullptr) {
         std::string cacert_path = std::getenv("SSL_CERT_FILE");
-        curl_easy_setopt(curl_->handle, CURLOPT_CAINFO,cacert_path.data());
+        curl_easy_setopt(curl_->handle, CURLOPT_CAINFO, cacert_path.data());
     }
 
 #if LIBCURL_VERSION_MAJOR >= 7
